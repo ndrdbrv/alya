@@ -241,7 +241,15 @@
       display: flex; flex-direction: column; align-items: center;
       opacity: 0; transform: translateY(100%);
       pointer-events: auto;
+      padding: 0 10px;
       transition: transform 1.8s cubic-bezier(.22,1,.36,1), opacity 1.6s cubic-bezier(.22,1,.36,1);
+    }
+    /* Larger invisible hover zone so sway doesn't break hover */
+    .tulip::before {
+      content: '';
+      position: absolute;
+      top: -10px; left: -14px; right: -14px; bottom: 0;
+      pointer-events: auto;
     }
     .tulip.grow {
       opacity: 1; transform: translateY(0);
