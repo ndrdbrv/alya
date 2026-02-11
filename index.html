@@ -251,15 +251,14 @@
       position: relative;
       width: var(--head-w, 22px);
       height: var(--head-h, 32px);
-      transition: filter .4s ease, transform .4s ease;
+      transition: filter .3s ease;
     }
     .tulip:hover .tulip-head {
-      filter: brightness(1.18) drop-shadow(0 0 14px rgba(220,70,120,.35)) drop-shadow(0 0 28px rgba(220,70,120,.18));
-      transform: scale(1.06);
-      transition: filter .3s ease, transform .3s ease;
+      filter: brightness(1.15) drop-shadow(0 4px 12px rgba(220,70,120,.25));
+      transition: filter .3s ease;
     }
     .tulip:not(:hover) .tulip-head {
-      transition: filter 1.2s ease, transform .6s ease;
+      transition: filter .8s ease;
     }
 
     .t-petal {
@@ -600,24 +599,46 @@
     function growHydrangeas() {
       const m = window.innerWidth < 600;
       const clusters = [
-        { x:2,  y:54, r:m?45:70, palette:0, delay:.1 },
-        { x:10, y:64, r:m?36:56, palette:2, delay:.3 },
-        { x:3,  y:72, r:m?28:44, palette:1, delay:.55 },
+        // Left side - large clusters
+        { x:1,  y:50, r:m?48:74, palette:0, delay:.1 },
+        { x:8,  y:60, r:m?40:62, palette:2, delay:.25 },
+        { x:2,  y:70, r:m?32:50, palette:1, delay:.45 },
+        { x:12, y:75, r:m?26:40, palette:3, delay:.6 },
 
-        { x:72, y:56, r:m?45:68, palette:1, delay:.2 },
-        { x:80, y:66, r:m?36:54, palette:3, delay:.4 },
-        { x:66, y:74, r:m?28:42, palette:0, delay:.65 },
+        // Right side - large clusters
+        { x:70, y:52, r:m?48:72, palette:1, delay:.15 },
+        { x:78, y:62, r:m?40:60, palette:3, delay:.3 },
+        { x:64, y:72, r:m?32:48, palette:0, delay:.5 },
+        { x:82, y:74, r:m?26:38, palette:4, delay:.65 },
 
-        { x:2,  y:2,  r:m?38:60, palette:3, delay:.25 },
-        { x:10, y:8,  r:m?26:40, palette:0, delay:.5 },
+        // Top-left corner
+        { x:1,  y:1,  r:m?42:65, palette:3, delay:.2 },
+        { x:10, y:6,  r:m?30:46, palette:0, delay:.4 },
+        { x:3,  y:14, r:m?22:34, palette:2, delay:.55 },
 
-        { x:76, y:2,  r:m?38:58, palette:2, delay:.35 },
-        { x:84, y:8,  r:m?24:36, palette:4, delay:.6 },
+        // Top-right corner
+        { x:74, y:1,  r:m?42:62, palette:2, delay:.25 },
+        { x:84, y:6,  r:m?28:42, palette:4, delay:.45 },
+        { x:78, y:14, r:m?22:32, palette:1, delay:.6 },
+
+        // Mid-left edge
+        { x:0,  y:32, r:m?30:48, palette:4, delay:.35 },
+        { x:6,  y:40, r:m?24:36, palette:1, delay:.5 },
+
+        // Mid-right edge
+        { x:88, y:34, r:m?30:46, palette:0, delay:.4 },
+        { x:82, y:42, r:m?24:34, palette:2, delay:.55 },
       ];
       if (!m) {
         clusters.push(
-          { x:20, y:3, r:28, palette:1, delay:.9 },
-          { x:90, y:38, r:22, palette:2, delay:1.1 },
+          // Extra fills for desktop
+          { x:18, y:2, r:32, palette:1, delay:.7 },
+          { x:56, y:1, r:28, palette:4, delay:.75 },
+          { x:92, y:28, r:26, palette:2, delay:.8 },
+          { x:0,  y:85, r:38, palette:3, delay:.7 },
+          { x:86, y:82, r:36, palette:0, delay:.75 },
+          { x:14, y:82, r:28, palette:4, delay:.85 },
+          { x:70, y:82, r:30, palette:1, delay:.8 },
         );
       }
       clusters.forEach(h => makeHydrangea(h));
