@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dinner Date</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #f5f3ef;
+      color: #2a2a2a;
+      -webkit-font-smoothing: antialiased;
+      padding: 2rem;
+      gap: 1.5rem;
+    }
+
+    .card {
+      max-width: 440px; width: 100%;
+      background: white;
+      border-radius: 20px;
+      padding: clamp(2rem, 6vw, 3.5rem);
+      box-shadow: 0 8px 40px rgba(120,100,160,.1);
+      text-align: center;
+      opacity: 0; transform: translateY(20px);
+      animation: cardIn 1s .3s ease forwards;
+    }
+    @keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
+
+    .card-icon { font-size: 2.4rem; margin-bottom: 1.2rem; animation: gentle 3s ease-in-out infinite; }
+    @keyframes gentle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-style: italic;
+      font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+      color: #2a2a2a;
+      letter-spacing: -.02em; line-height: 1.2;
+      margin-bottom: 1.6rem;
+    }
+
+    .divider { width: 1px; height: 32px; background: #cec5d8; margin: 0 auto 1.6rem; opacity: .4; }
+
+    .detail { display: flex; align-items: center; justify-content: center; gap: .6rem; margin-bottom: 1rem; }
+    .detail-icon { font-size: 1.1rem; width: 28px; text-align: center; }
+    .detail-text { font-weight: 300; font-size: clamp(.85rem, 1.8vw, 1rem); color: #4a4a5a; letter-spacing: .02em; }
+    .detail-label { font-size: clamp(.65rem, 1.2vw, .72rem); text-transform: uppercase; letter-spacing: .14em; color: #9a8faa; margin-bottom: .3rem; }
+
+    .note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: clamp(.95rem, 2vw, 1.15rem);
+      color: #8a7f9a; margin-top: 2rem; line-height: 1.5;
+    }
+
+    .back-link {
+      display: inline-block; margin-top: 2rem;
+      font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+      color: #9a8faa; text-decoration: none; transition: color .3s ease;
+    }
+    .back-link:hover { color: #6b5b8a; }
+
+    /* Surprise button */
+    .surprise-btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      margin-top: 1.6rem; padding: .7em 1.8em;
+      background: white; border: 1.5px solid rgba(200,170,210,.3);
+      border-radius: 50px; cursor: pointer;
+      font-family: 'Inter', sans-serif; font-size: .7rem;
+      letter-spacing: .12em; text-transform: uppercase; color: #9a8faa;
+      text-decoration: none;
+      transition: all .3s ease;
+      box-shadow: 0 3px 12px rgba(140,100,160,.1);
+      animation: pulse 3s ease-in-out infinite 2s;
+    }
+    .surprise-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(140,100,160,.18);
+      color: #6b5b8a; border-color: rgba(160,130,180,.4);
+    }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+
+    .surprise-emoji { font-size: 1.2rem; }
+
+    /* Floating background */
+    .bg-hearts { position: fixed; inset: 0; pointer-events: none; z-index: -1; overflow: hidden; }
+    .bg-heart { position: absolute; opacity: 0; animation: floatH linear infinite; }
+    @keyframes floatH {
+      0% { transform: translateY(100vh) rotate(0); opacity: 0; }
+      10% { opacity: .15; } 90% { opacity: .15; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-hearts" id="bgHearts"></div>
+
+  <div class="card">
+    <div class="card-icon">&#x1F37D;&#xFE0F;</div>
+    <div class="card-title">You're Invited<br>to Dinner</div>
+    <div class="divider"></div>
+
+    <div class="detail-label">When</div>
+    <div class="detail">
+      <span class="detail-icon">&#x1F4C5;</span>
+      <span class="detail-text">February 14, 2026</span>
+    </div>
+    <div class="detail">
+      <span class="detail-icon">&#x1F552;</span>
+      <span class="detail-text">7:30 PM</span>
+    </div>
+
+    <div style="height: 1rem;"></div>
+
+    <div class="detail-label">Dress Code</div>
+    <div class="detail">
+      <span class="detail-icon">&#x2728;</span>
+      <span class="detail-text">Look cute (you always do)</span>
+    </div>
+
+    <div class="note">
+      I'll pick you up. Just bring your smile)
+    </div>
+
+    <a href="paris.html" class="surprise-btn">
+      <span class="surprise-emoji">&#x1F431;</span>
+      psst... another surprise!
+    </a>
+
+    <br>
+    <a href="index.html" class="back-link">&larr; back</a>
+  </div>
+
+  <script>
+    const items = ['&#x1F339;','&#x1F33A;','&#x2764;&#xFE0F;','&#x1F49C;','&#x1F490;','&#x1F338;','&#x1F33C;','&#x1F940;'];
+    const c = document.getElementById('bgHearts');
+    for (let i = 0; i < 15; i++) {
+      const h = document.createElement('div');
+      h.className = 'bg-heart';
+      h.innerHTML = items[Math.floor(Math.random()*items.length)];
+      h.style.cssText = `left:${Math.random()*100}%;font-size:${1+Math.random()*1.5}rem;animation-duration:${8+Math.random()*10}s;animation-delay:${Math.random()*10}s;`;
+      c.appendChild(h);
+    }
+  </script>
+</body>
+</html>

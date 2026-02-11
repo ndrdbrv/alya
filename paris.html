@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #1a1520;
+      color: #2a2a2a;
+      -webkit-font-smoothing: antialiased;
+      padding: 2rem;
+      overflow: hidden;
+    }
+
+    .paris-bg {
+      position: fixed; inset: 0; z-index: 0;
+      background: url('paris_bg.png') center center / cover no-repeat;
+      opacity: .35;
+    }
+    .paris-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(20,15,30,.3) 0%, rgba(20,15,30,.6) 100%);
+    }
+
+    .card {
+      max-width: 460px; width: 100%;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: clamp(2rem, 6vw, 3.5rem);
+      box-shadow: 0 12px 50px rgba(0,0,0,.2);
+      text-align: center;
+      opacity: 0; transform: translateY(20px);
+      animation: cardIn 1s .3s ease forwards;
+      position: relative; z-index: 2;
+    }
+    @keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
+
+    .tower {
+      font-size: clamp(3rem, 8vw, 4.5rem);
+      margin-bottom: .8rem;
+      animation: gentle 3s ease-in-out infinite;
+    }
+    @keyframes gentle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-style: italic;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: #2a2a2a;
+      letter-spacing: -.02em; line-height: 1.15;
+      margin-bottom: .6rem;
+    }
+
+    .card-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 300;
+      font-size: clamp(1rem, 2.2vw, 1.3rem);
+      color: #8a7f9a;
+      margin-bottom: 1.8rem;
+    }
+
+    .divider { width: 1px; height: 28px; background: #cec5d8; margin: 0 auto 1.6rem; opacity: .4; }
+
+    .paris-emojis {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      margin-bottom: 1.6rem;
+      letter-spacing: .3em;
+    }
+
+    .detail { display: flex; align-items: center; justify-content: center; gap: .6rem; margin-bottom: .8rem; }
+    .detail-icon { font-size: 1.1rem; width: 28px; text-align: center; }
+    .detail-text { font-weight: 300; font-size: clamp(.85rem, 1.8vw, 1rem); color: #4a4a5a; letter-spacing: .02em; }
+    .detail-label { font-size: clamp(.65rem, 1.2vw, .72rem); text-transform: uppercase; letter-spacing: .14em; color: #9a8faa; margin-bottom: .3rem; }
+
+    .note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: #8a7f9a; margin-top: 2rem; line-height: 1.5;
+    }
+
+    .back-link {
+      display: inline-block; margin-top: 2rem;
+      font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+      color: #9a8faa; text-decoration: none; transition: color .3s ease;
+    }
+    .back-link:hover { color: #6b5b8a; }
+
+    /* Make floating items brighter on dark bg */
+    .bg-item { filter: brightness(1.3); }
+
+    /* Floating Paris emojis background */
+    .bg-float { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .bg-item { position: absolute; opacity: 0; animation: floatUp linear infinite; }
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) rotate(0); opacity: 0; }
+      10% { opacity: .2; } 90% { opacity: .18; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="paris-bg"></div>
+  <div class="bg-float" id="bgFloat"></div>
+
+  <div class="card">
+    <div class="tower">&#x1F5FC;</div>
+    <div class="card-title">We're Going<br>to Paris!</div>
+    <div class="card-sub">oui oui, mon amour</div>
+    <div class="divider"></div>
+
+    <div class="paris-emojis">&#x1F1EB;&#x1F1F7; &#x1F950; &#x2764;&#xFE0F; &#x1F377; &#x1F1EB;&#x1F1F7;</div>
+
+    <div class="detail-label">The Plan</div>
+    <div class="detail">
+      <span class="detail-icon">&#x2708;&#xFE0F;</span>
+      <span class="detail-text">Flights booked</span>
+    </div>
+    <div class="detail">
+      <span class="detail-icon">&#x1F5FC;</span>
+      <span class="detail-text">Eiffel Tower at sunset</span>
+    </div>
+    <div class="detail">
+      <span class="detail-icon">&#x1F950;</span>
+      <span class="detail-text">Croissants every morning</span>
+    </div>
+    <div class="detail">
+      <span class="detail-icon">&#x1F377;</span>
+      <span class="detail-text">Wine by the Seine</span>
+    </div>
+    <div class="detail">
+      <span class="detail-icon">&#x1F48B;</span>
+      <span class="detail-text">Kissing under every bridge</span>
+    </div>
+
+    <div class="note">
+      You deserve the world.<br>Paris is just the beginning)
+    </div>
+
+    <a href="dinner.html" class="back-link">&larr; back</a>
+  </div>
+
+  <script>
+    const items = ['&#x1F5FC;','&#x1F490;','&#x1F950;','&#x2764;&#xFE0F;','&#x1F377;','&#x1F1EB;&#x1F1F7;','&#x2728;','&#x1F339;','&#x1F48B;','&#x1F3A8;'];
+    const c = document.getElementById('bgFloat');
+    for (let i = 0; i < 18; i++) {
+      const el = document.createElement('div');
+      el.className = 'bg-item';
+      el.innerHTML = items[Math.floor(Math.random()*items.length)];
+      el.style.cssText = `left:${Math.random()*100}%;font-size:${1.2+Math.random()*1.8}rem;animation-duration:${8+Math.random()*12}s;animation-delay:${Math.random()*12}s;`;
+      c.appendChild(el);
+    }
+  </script>
+</body>
+</html>
