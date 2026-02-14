@@ -22,21 +22,22 @@
     .paris-bg {
       position: fixed; inset: 0; z-index: 0;
       background: url('paris_bg.png') center center / cover no-repeat;
-      opacity: .35;
+      opacity: .5;
     }
     .paris-bg::after {
       content: '';
       position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(20,15,30,.3) 0%, rgba(20,15,30,.6) 100%);
+      background: linear-gradient(180deg, rgba(20,15,30,.15) 0%, rgba(20,15,30,.45) 100%);
     }
 
     .card {
-      max-width: 460px; width: 100%;
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 20px;
-      padding: clamp(2rem, 6vw, 3.5rem);
+      max-width: 600px; width: 100%;
+      background: rgba(255,255,255,.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 18px;
+      padding: clamp(1.8rem, 5vw, 3rem);
+      margin-left: 30%;
       box-shadow: 0 12px 50px rgba(0,0,0,.2);
       text-align: center;
       opacity: 0; transform: translateY(20px);
@@ -45,20 +46,13 @@
     }
     @keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
 
-    .tower {
-      font-size: clamp(3rem, 8vw, 4.5rem);
-      margin-bottom: .8rem;
-      animation: gentle 3s ease-in-out infinite;
-    }
-    @keyframes gentle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-
     .card-title {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 300; font-style: italic;
-      font-size: clamp(2rem, 5vw, 3rem);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
       color: #2a2a2a;
       letter-spacing: -.02em; line-height: 1.15;
-      margin-bottom: .6rem;
+      margin-bottom: .4rem;
     }
 
     .card-sub {
@@ -70,12 +64,6 @@
     }
 
     .divider { width: 1px; height: 28px; background: #cec5d8; margin: 0 auto 1.6rem; opacity: .4; }
-
-    .paris-emojis {
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      margin-bottom: 1.6rem;
-      letter-spacing: .3em;
-    }
 
     .detail { display: flex; align-items: center; justify-content: center; gap: .6rem; margin-bottom: .8rem; }
     .detail-icon { font-size: 1.1rem; width: 28px; text-align: center; }
@@ -114,37 +102,39 @@
   <div class="bg-float" id="bgFloat"></div>
 
   <div class="card">
-    <div class="tower">&#x1F5FC;</div>
-    <div class="card-title">We're Going<br>to Paris!</div>
-    <div class="card-sub">oui oui, mon amour</div>
+    <div class="card-title">Can't Wait for Paris! &#x2728;</div>
     <div class="divider"></div>
 
-    <div class="paris-emojis">&#x1F1EB;&#x1F1F7; &#x1F950; &#x2764;&#xFE0F; &#x1F377; &#x1F1EB;&#x1F1F7;</div>
+    <div class="detail-label">Eurostar &mdash; There</div>
+    <div class="detail">
+      <span class="detail-text">Friday, Feb 20 &middot; 11:31 AM</span>
+    </div>
+    <div class="detail">
+      <span class="detail-text" style="color:#9a8faa;font-size:.85rem;">Arrives 2:53 PM</span>
+    </div>
 
-    <div class="detail-label">The Plan</div>
+    <div style="height: .6rem;"></div>
+
+    <div class="detail-label">Eurostar &mdash; Back</div>
     <div class="detail">
-      <span class="detail-icon">&#x2708;&#xFE0F;</span>
-      <span class="detail-text">Flights booked</span>
+      <span class="detail-text">Monday, Feb 23 &middot; 12:08 PM</span>
     </div>
     <div class="detail">
-      <span class="detail-icon">&#x1F5FC;</span>
-      <span class="detail-text">Eiffel Tower at sunset</span>
+      <span class="detail-text" style="color:#9a8faa;font-size:.85rem;">Arrives 1:30 PM</span>
+    </div>
+
+    <div style="height: .6rem;"></div>
+
+    <div class="detail-label">Stay</div>
+    <div class="detail">
+      <span class="detail-text">H&ocirc;tel de Nell</span>
     </div>
     <div class="detail">
-      <span class="detail-icon">&#x1F950;</span>
-      <span class="detail-text">Croissants every morning</span>
-    </div>
-    <div class="detail">
-      <span class="detail-icon">&#x1F377;</span>
-      <span class="detail-text">Wine by the Seine</span>
-    </div>
-    <div class="detail">
-      <span class="detail-icon">&#x1F48B;</span>
-      <span class="detail-text">Kissing under every bridge</span>
+      <span class="detail-text" style="color:#9a8faa;font-size:.85rem;">3 nights &middot; Feb 20&ndash;23</span>
     </div>
 
     <div class="note">
-      You deserve the world.<br>Paris is just the beginning)
+      Paris is just the beginning,<br>we will travel wayyyy more &#x1F30D;&#x2764;&#xFE0F;&#x1F6E9;&#xFE0F;
     </div>
 
     <a href="dinner.html" class="back-link">&larr; back</a>
